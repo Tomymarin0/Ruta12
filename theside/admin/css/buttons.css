@@ -1,0 +1,121 @@
+.hide {
+    display: none;
+}
+.button-input-submit {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 12.5rem;
+    cursor: pointer;
+    margin: 5% 0% 5% 25%;
+    padding: 10% 10%;
+    background-color: #26354a;
+    border: none;
+    border-radius: 0.3125rem;
+    /*box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.2);*/
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.button-input-submit:hover{
+    background-color: #1b7940;
+}
+
+.button-input-submit:before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #54d98c;
+}
+.button-input-submit span {
+    position: absolute;
+    line-height: 0;
+}
+.button-input-submit span i {
+    transform-origin: center center;
+}
+.button-input-submit span:nth-of-type(1) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.button-input-submit span:nth-of-type(2) {
+    top: 100%;
+    transform: translateY(0%);
+    font-size: 24px;
+}
+.button-input-submit span:nth-of-type(3) {
+    display: none;
+}
+.active-input-submit {
+    background-color: #2ecc71;
+}
+.active-input-submit:before {
+    width: 100%;
+    transition: width 3s linear;
+}
+.active-input-submit span:nth-of-type(1) {
+    top: -100%;
+    transform: translateY(-50%);
+}
+.active-input-submit span:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.active-input-submit span:nth-of-type(2) i {
+    animation: loading 500ms linear infinite;
+}
+.active-input-submit span:nth-of-type(3) {
+    display: none;
+}
+.finished-input-submit {
+    background-color: #54d98c;
+}
+.finished-input-submit .submit-input-submit {
+    display: none;
+}
+.finished-input-submit .loading {
+    display: none;
+}
+.finished-input-submit .check {
+    display: block !important;
+    font-size: 24px;
+    animation: scale 0.5s linear;
+}
+.finished-input-submit .check i {
+    transform-origin: center center;
+}
+@keyframes loading {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes scale {
+    0% {
+        transform: scale(10);
+    }
+    50% {
+        transform: scale(0.2);
+    }
+    70% {
+        transform: scale(1.2);
+    }
+    90% {
+        transform: scale(0.7);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .button-input-submit{
+        width: auto;
+    }
+}

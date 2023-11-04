@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  ruta12:
+    image: ruta12
+    ports: ["20000:80"]
+    container_name: "ruta12"
+    depends_on:
+      - theside-db
+    volumes:
+      - ./theside:/var/www/html/
+      
+  theside-db:
+    container_name: 'theside-db'
+    image: mysql:8
+    ports: ["9906:3306"]
+    expose: [ "3306" ]
+    environment:
+      MYSQL_DATABASE: "ruta12"
+      MYSQL_USER: "fafa"
+      MYSQL_PASSWORD: "asd123"
+      MYSQL_ROOT_PASSWORD: "asd123"
+    restart: unless-stopped
+    volumes:
+      - ./ruta12.sql:/docker-entrypoint-initdb.d/ruta12.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - '8081:80'
+    restart: always
+    environment:
+        PMA_HOST: theside-db
+    depends_on:
+        - theside-db
